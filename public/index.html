@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Téléjam Prototype</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div id="app-container">
+        
+        <div class="global-brand">TéléJam</div>
+
+        <!-- Home Page -->
+        <section id="home-view" class="view active">
+            <h1 class="page-title">Choose track</h1>
+            
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search for a song...">
+                <button id="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            
+            <div id="search-empty-state" class="hidden text-center empty-state">
+                <h2>Song unknown</h2>
+                <p>This song isn't part of the<br>repertoire. Try to look for<br>another song.</p>
+            </div>
+
+            <div id="popular-section">
+                <h2 class="underline-title"><span>Most popular</span></h2>
+                <div id="popular-songs-list" class="song-list">
+                    <!-- Dynamically populated -->
+                </div>
+            </div>
+
+            <div id="search-results-list" class="song-list hidden">
+                <!-- Dynamically populated -->
+            </div>
+
+            <div class="test-container">
+                <button id="random-song-btn" class="secondary-btn">Random Song</button>
+            </div>
+        </section>
+
+        <!-- Role Selection Page -->
+        <section id="role-view" class="view">
+            <div class="role-header-top">
+                <button class="back-btn" id="role-back-btn"><i class="fas fa-arrow-left"></i></button>
+            </div>
+            <h1 class="page-title" style="margin-bottom: 20px;">Choose your role</h1>
+
+            <div class="song-details-header">
+                <h2 id="role-song-title">Song Title</h2>
+                <p id="role-song-artist">Artist</p>
+            </div>
+
+            <div class="roles-container">
+                <div class="role-card" id="role-lead-btn">
+                    <i class="fas fa-microphone"></i>
+                    <h2>Lead</h2>
+                </div>
+                <div class="role-card" id="role-chords-btn">
+                    <i class="fas fa-keyboard"></i>
+                    <h2>Chords</h2>
+                </div>
+            </div>
+        </section>
+
+        <!-- Song Display Area (Lead & Chords) -->
+        <section id="song-display-view" class="view scrollable">
+            <header id="toolbar" class="toolbar hidden">
+                <button id="menu-btn"><i class="fas fa-bars"></i></button>
+                <div class="toolbar-title-container">
+                    <h2 id="toolbar-title">Title</h2>
+                    <p id="toolbar-artist">Artist</p>
+                </div>
+                <div style="width: 24px;"></div>
+            </header>
+
+            <div id="lyrics-container">
+                <!-- Dynamically populated lyrics/chords -->
+            </div>
+        </section>
+
+        <!-- Overlay Menu -->
+        <div id="side-menu-overlay" class="hidden"></div>
+        <div id="side-menu" class="hidden">
+            <button id="close-menu-btn"><i class="fas fa-times"></i></button>
+            <div class="menu-content">
+                <button id="menu-song-select-btn" class="menu-item"><i class="fas fa-arrow-left"></i> <span>Back to track selection</span></button>
+                <button id="menu-role-select-btn" class="menu-item"><i class="fas fa-exchange-alt"></i> <span>Change role</span></button>
+                <button id="menu-toggle-scroll-btn" class="menu-item"><i class="fas fa-lock"></i> <span>Toggle controls</span></button>
+                <button id="menu-report-bug-btn" class="menu-item"><i class="fas fa-exclamation-circle"></i> <span>Report a problem</span></button>
+            </div>
+        </div>
+
+        <!-- Bug Report Modal -->
+        <div id="bug-report-modal" class="modal hidden">
+            <div class="modal-content">
+                <h3>Report a Bug</h3>
+                <p>Please describe the issue you encountered.</p>
+                <textarea id="bug-report-text" rows="5" placeholder="Bug description..."></textarea>
+                <div class="modal-actions">
+                    <button id="close-bug-btn" class="cancel-btn">Cancel</button>
+                    <button id="submit-bug-btn" class="primary-btn-small">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

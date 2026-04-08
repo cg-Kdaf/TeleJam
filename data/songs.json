@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1",
+        "title": "Hotel california",
+        "artist": "Eagles",
+        "popular": true,
+        "sections": [
+            { "lyric": "On a dark desert highway", "chord": "Bm" },
+            { "lyric": "Cool wind in my hair", "chord": "F#" },
+            { "lyric": "Warm smell of colitas", "chord": "A" }
+        ]
+    },
+    {
+        "id": "2",
+        "title": "New-York avec toi",
+        "artist": "Téléphone",
+        "popular": true,
+        "sections": [
+            { "lyric": "Un jour j'irais à New-York avec toi", "chord": "Gm      Gm7" },
+            { "lyric": "Toutes les nuits déconner", "chord": "Bb      EbM7" },
+            { "lyric": "Et voir aucun film en entier,", "chord": "D       D7" },
+            { "lyric": "ça va d'soi", "chord": "Gm      " },
+            { "lyric": "Avoir la vie partagée,", "chord": "Bb      " }
+        ]
+    },
+    {
+        "id": "3",
+        "title": "Call me maybe",
+        "artist": "Carly Rae Jepsen",
+        "popular": true,
+        "sections": [
+            { "lyric": "I threw a wish in the well", "chord": "G" },
+            { "lyric": "Don't ask me, I'll never tell", "chord": "D" },
+            { "lyric": "I looked to you as it fell", "chord": "C" },
+            { "lyric": "And now you're in my way", "chord": "C" }
+        ]
+    }
+]
