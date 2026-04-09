@@ -77,9 +77,15 @@
                     <h2 id="toolbar-title">Title</h2>
                     <p id="toolbar-artist">Artist</p>
                 </div>
-                <button id="toggle-play-btn" style="background: none; border: none; color: black; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px;">
-                    <i class="fas fa-play"></i>
-                </button>
+                <div id="toolbar-vinyl" class="toolbar-vinyl">
+                    <div id="vinyl-disc" class="vinyl-disc">
+                        <img id="toolbar-vinyl-img" src="" alt="Song cover" />
+                    </div>
+
+                    <button id="toggle-play-btn" class="vinyl-play-btn">
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
             </header>
 
             <div id="lyrics-container">
@@ -87,7 +93,8 @@
             </div>
         </section>
 
-        <button id="open-bpm-btn" class="hidden" style="position: absolute; bottom: 30px; right: 30px; width: 50px; height: 50px; border-radius: 50%; border: none; background: #333; color: white; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 100; cursor: pointer; font-size: 0.9rem; font-weight: bold;">BPM</button>
+        <button id="open-bpm-btn" class="hidden"
+            style="position: absolute; bottom: 30px; right: 30px; width: 50px; height: 50px; border-radius: 50%; border: none; background: #333; color: white; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 100; cursor: pointer; font-size: 0.9rem; font-weight: bold;">BPM</button>
 
         <!-- Overlay Menu -->
         <div id="side-menu-overlay" class="hidden"></div>
@@ -111,8 +118,8 @@
                 <h3>Report a Bug</h3>
                 <p>Please describe the issue you encountered.</p>
                 <textarea id="bug-report-text" rows="5" placeholder="Bug description..."></textarea>
-                <div class="modal-actions">
-                    <button id="close-bug-btn" class="cancel-btn">Cancel</button>
+                <div class="modal-actions colored-border">
+                    <button id="close-bug-btn" class="primary-btn-small">Cancel</button>
                     <button id="submit-bug-btn" class="primary-btn-small">Submit</button>
                 </div>
             </div>
@@ -120,12 +127,14 @@
 
         <!-- BPM Control Modal -->
         <div id="bpm-modal" class="modal hidden">
-            <div class="modal-content" style="text-align: center;">
+            <div class="modal-content colored-border" style="text-align: center;">
                 <h3>Change BPM</h3>
                 <div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin: 20px 0;">
-                    <button id="bpm-decrease-btn" style="width: 40px; height: 40px; font-size: 1.5rem; border-radius: 50%; border: 1.5px solid var(--border-color); background: var(--card-bg); cursor: pointer;">-</button>
+                    <button id="bpm-decrease-btn"
+                        style="width: 40px; height: 40px; font-size: 1.5rem; border-radius: 50%; border: 1.5px solid var(--border-color); background: var(--card-bg); cursor: pointer;">-</button>
                     <span id="bpm-display-value" style="font-size: 2rem; font-weight: bold;">120</span>
-                    <button id="bpm-increase-btn" style="width: 40px; height: 40px; font-size: 1.5rem; border-radius: 50%; border: 1.5px solid var(--border-color); background: var(--card-bg); cursor: pointer;">+</button>
+                    <button id="bpm-increase-btn"
+                        style="width: 40px; height: 40px; font-size: 1.5rem; border-radius: 50%; border: 1.5px solid var(--border-color); background: var(--card-bg); cursor: pointer;">+</button>
                 </div>
                 <button id="close-bpm-btn" class="primary-btn-small" style="width: 100%;">Done</button>
             </div>
@@ -135,28 +144,47 @@
         <div id="session-modal" class="modal hidden">
             <div class="modal-content" style="text-align: center;">
                 <h3 id="session-modal-title">Shared Session</h3>
-                
+
                 <div id="session-host-view" class="hidden">
                     <p>Scan this QR code to join the session:</p>
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=TeleJamSession" alt="QR Code" style="margin: 20px auto; display: block;" />
-                    <button id="session-host-start-btn" class="primary-btn-small" style="width: 100%; margin-top: 10px;">Start Session</button>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=TeleJamSession"
+                        alt="QR Code" style="margin: 20px auto; display: block;" />
+                    <button id="session-host-start-btn" class="primary-btn-small"
+                        style="width: 100%; margin-top: 10px;">Start Session</button>
                 </div>
-                
+
                 <div id="session-join-view" class="hidden">
                     <p>Scanning QR Code...</p>
-                    <div style="width: 200px; height: 200px; background: #000; margin: 20px auto; position: relative; border: 2px solid #fff; overflow: hidden;">
-                        <div style="width: 100%; height: 2px; background: red; position: absolute; animation: scan 2s infinite ease-in-out;"></div>
-                        <style>@keyframes scan { 0% { top: 0; } 50% { top: 100%; } 100% { top: 0; } }</style>
+                    <div
+                        style="width: 200px; height: 200px; background: #000; margin: 20px auto; position: relative; border: 2px solid #fff; overflow: hidden;">
+                        <div
+                            style="width: 100%; height: 2px; background: red; position: absolute; animation: scan 2s infinite ease-in-out;">
+                        </div>
+                        <style>
+                            @keyframes scan {
+                                0% {
+                                    top: 0;
+                                }
+
+                                50% {
+                                    top: 100%;
+                                }
+
+                                100% {
+                                    top: 0;
+                                }
+                            }
+                        </style>
                     </div>
                     <p id="session-join-status">Looking for session...</p>
                 </div>
-                
-                <div id="session-actions" style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+
+                <div id="session-actions">
                     <button id="host-session-btn" class="primary-btn-small">Host a Session</button>
                     <button id="join-session-btn" class="secondary-btn">Join a Session</button>
                 </div>
-                
-                <button id="close-session-btn" class="cancel-btn" style="width: 100%; margin-top: 20px;">Cancel</button>
+
+                <button id="close-session-btn" class="primary-btn-small">Cancel</button>
             </div>
         </div>
     </div>

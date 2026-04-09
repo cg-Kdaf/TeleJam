@@ -38,6 +38,9 @@ const app = {
       toolbar: document.getElementById('toolbar'),
       toolbarTitle: document.getElementById('toolbar-title'),
       toolbarArtist: document.getElementById('toolbar-artist'),
+      toolbarPlayVinyl: document.getElementById('toolbar-vinyl'),
+      vinylDisc: document.getElementById('vinyl-disc'),
+      toolbarVinylImg: document.getElementById('toolbar-vinyl-img'),
       togglePlayBtn: document.getElementById('toggle-play-btn'),
 
       menuBtn: document.getElementById('menu-btn'),
@@ -45,7 +48,7 @@ const app = {
       sideMenuOverlay: document.getElementById('side-menu-overlay'),
       closeMenuBtn: document.getElementById('close-menu-btn'),
       bugModal: document.getElementById('bug-report-modal'),
-      
+
       // Session Modal Elements
       openSessionModalBtn: document.getElementById('open-session-modal-btn'),
       sessionModal: document.getElementById('session-modal'),
@@ -149,10 +152,11 @@ const app = {
       this.elements.sessionActions.style.display = 'none';
       this.elements.sessionJoinView.classList.remove('hidden');
       this.elements.sessionJoinStatus.textContent = 'Scanning QR Code...';
-      
+
       // Fake scanning delay
       setTimeout(() => {
-        this.elements.sessionJoinStatus.textContent = 'Session found! Joining...';
+        this.elements.sessionJoinStatus.textContent =
+            'Session found! Joining...';
         setTimeout(() => {
           this.elements.sessionModal.classList.add('hidden');
           // Start the shared session automatically with a random song!
@@ -190,7 +194,8 @@ const app = {
     });
 
     this.elements.bpmDecreaseBtn.addEventListener('click', () => {
-      this.currentSong.customBpm = Math.max(30, (this.currentSong.customBpm || 120) - 5);
+      this.currentSong.customBpm =
+          Math.max(30, (this.currentSong.customBpm || 120) - 5);
       this.elements.bpmDisplayValue.textContent = this.currentSong.customBpm;
     });
   },
@@ -277,7 +282,7 @@ const app = {
                         <p>${song.artist}</p>
                     </div>
                 </div>
-                <div class="song-arrow"><i class="fas fa-arrow-right"></i></div>
+                <i class="fas fa-arrow-right primary-btn-small"></i>
             `;
       card.addEventListener('click', () => this.selectSong(song));
       container.appendChild(card);
@@ -289,6 +294,10 @@ const app = {
     console.log(song);
     this.elements.roleSongTitle.textContent = song.title;
     this.elements.roleSongArtist.textContent = song.artist;
+    if (this.elements.toolbarVinylImg) {
+      this.elements.toolbarVinylImg.src = song.cover || '';
+      this.elements.toolbarVinylImg.alt = `${song.title} cover`;
+    }
     this.showTitleView('role');
   },
 
@@ -344,8 +353,12 @@ const app = {
     if (viewName !== 'song') {
       this.isPlaying = false;
       this.stopAutoScroll();
+      if (this.elements.vinylDisc) {
+        this.elements.vinylDisc.classList.remove('vinyl-spinning');
+      }
       if (this.elements.togglePlayBtn) {
-        this.elements.togglePlayBtn.querySelector('i').className = 'fas fa-play';
+        this.elements.togglePlayBtn.querySelector('i').className =
+            'fas fa-play';
       }
     }
 
@@ -385,35 +398,43 @@ const app = {
   toggleAutoScroll() {
     this.isPlaying = !this.isPlaying;
     const icon = this.elements.togglePlayBtn.querySelector('i');
-    
+
     if (this.isPlaying) {
       icon.className = 'fas fa-pause';
+      if (this.elements.vinylDisc) {
+        this.elements.vinylDisc.classList.add('vinyl-spinning');
+      }
       this.startAutoScroll();
     } else {
       icon.className = 'fas fa-play';
+      if (this.elements.vinylDisc) {
+        this.elements.vinylDisc.classList.remove('vinyl-spinning');
+      }
       this.stopAutoScroll();
     }
   },
 
   startAutoScroll() {
     let lastTime = performance.now();
-    // Use floating point accumulation to avoid fractional sub-pixel loss in fast frames
+    // Use floating point accumulation to avoid fractional sub-pixel loss in
+    // fast frames
     let accumulatedScroll = 0;
-    
+
     const step = (currentTime) => {
       if (!this.isPlaying) return;
-      
+
       const delta = (currentTime - lastTime) / 1000;
       lastTime = currentTime;
-      
+
       // Always get the latest BPM so it updates in real time if user changes it
       const bpm = this.currentSong.customBpm || this.currentSong.bpm || 120;
-      
+
       // 120 beats per minute -> 2 beats per second.
-      // E.g. A typical line height could be ~40px per beat block, so 2 beats/sec = 80px/sec 
-      // This makes the speed directly and strongly proportional to BPM
-      const pixelsPerSecond = (bpm / 120) * 80; 
-      
+      // E.g. A typical line height could be ~40px per beat block, so 2
+      // beats/sec = 80px/sec This makes the speed directly and strongly
+      // proportional to BPM
+      const pixelsPerSecond = (bpm / 120) * 80;
+
       if (this.views.song) {
         accumulatedScroll += pixelsPerSecond * delta;
         if (accumulatedScroll >= 1) {
@@ -422,10 +443,10 @@ const app = {
           accumulatedScroll -= pixelsToScroll;
         }
       }
-      
+
       this.autoScrollAnimation = requestAnimationFrame(step);
     };
-    
+
     this.autoScrollAnimation = requestAnimationFrame(step);
   },
 
