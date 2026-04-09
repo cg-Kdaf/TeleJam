@@ -1,13 +1,121 @@
 [
     {
         "id": "1",
-        "title": "Hotel california",
+        "title": "Hotel California",
         "artist": "Eagles",
         "popular": true,
-        "sections": [
-            { "lyric": "On a dark desert highway", "chord": "Bm" },
-            { "lyric": "Cool wind in my hair", "chord": "F#" },
-            { "lyric": "Warm smell of colitas", "chord": "A" }
+        "bpm": 80,
+        "content": [
+            {
+                "beat": 1,
+                "chord": "Bm",
+                "lyric": "On a dark desert highway,"
+            },
+            {
+                "beat": 9,
+                "chord": "F#",
+                "lyric": "Cool wind in my hair"
+            },
+            {
+                "beat": 17,
+                "chord": "A",
+                "lyric": "Warm smell of colitas,"
+            },
+            {
+                "beat": 25,
+                "chord": "E",
+                "lyric": "Rising up through the air"
+            },
+            {
+                "beat": 33,
+                "chord": "G",
+                "lyric": "Up ahead in the distance,"
+            },
+            {
+                "beat": 41,
+                "chord": "D",
+                "lyric": "I saw a shimmering light"
+            },
+            {
+                "beat": 49,
+                "chord": "Em",
+                "lyric": "My head grew heavy and my sight grew dim"
+            },
+            {
+                "beat": 57,
+                "chord": "F#",
+                "lyric": "I had to stop for the night"
+            },
+            {
+                "beat": 65,
+                "chord": "Bm",
+                "lyric": "There she stood in the doorway;"
+            },
+            {
+                "beat": 73,
+                "chord": "F#",
+                "lyric": "I heard the mission bell"
+            },
+            {
+                "beat": 81,
+                "chord": "A",
+                "lyric": "And I was thinking to myself,"
+            },
+            {
+                "beat": 89,
+                "chord": "E",
+                "lyric": "'This could be Heaven or this could be Hell'"
+            },
+            {
+                "beat": 97,
+                "chord": "G",
+                "lyric": "Then she lit up a candle"
+            },
+            {
+                "beat": 105,
+                "chord": "D",
+                "lyric": "And she showed me the way"
+            },
+            {
+                "beat": 113,
+                "chord": "Em",
+                "lyric": "There were voices down the corridor,"
+            },
+            {
+                "beat": 121,
+                "chord": "F#",
+                "lyric": "I thought I heard them say..."
+            },
+            {
+                "beat": 129,
+                "chord": "G",
+                "lyric": "Welcome to the Hotel California"
+            },
+            {
+                "beat": 137,
+                "chord": "D",
+                "lyric": "Such a lovely place (Such a lovely place)"
+            },
+            {
+                "beat": 145,
+                "chord": "F#",
+                "lyric": "Such a lovely face"
+            },
+            {
+                "beat": 153,
+                "chord": "Bm",
+                "lyric": "Plenty of room at the Hotel California"
+            },
+            {
+                "beat": 161,
+                "chord": "G",
+                "lyric": "Any time of year (Any time of year)"
+            },
+            {
+                "beat": 169,
+                "chord": "D",
+                "lyric": "You can find it here"
+            }
         ]
     },
     {
@@ -15,12 +123,103 @@
         "title": "New-York avec toi",
         "artist": "Téléphone",
         "popular": true,
-        "sections": [
-            { "lyric": "Un jour j'irais à New-York avec toi", "chord": "Gm      Gm7" },
-            { "lyric": "Toutes les nuits déconner", "chord": "Bb      EbM7" },
-            { "lyric": "Et voir aucun film en entier,", "chord": "D       D7" },
-            { "lyric": "ça va d'soi", "chord": "Gm      " },
-            { "lyric": "Avoir la vie partagée,", "chord": "Bb      " }
+        "bpm": 136,
+        "content": [
+            {
+                "beat": 1,
+                "chord": "Gm",
+                "lyric": "Un jour j'irais à New-York "
+            },
+            {
+                "beat": 5,
+                "chord": "Gm7",
+                "lyric": "avec toi"
+            },
+            {
+                "beat": 9,
+                "chord": "Bb",
+                "lyric": "Toutes les nuits "
+            },
+            {
+                "beat": 13,
+                "chord": "EbM7",
+                "lyric": "déconner"
+            },
+            {
+                "beat": 17,
+                "chord": "D",
+                "lyric": "Et voir aucun film "
+            },
+            {
+                "beat": 21,
+                "chord": "D7",
+                "lyric": "en entier,"
+            },
+            {
+                "beat": 25,
+                "chord": "Gm",
+                "lyric": "ça va d'soi"
+            },
+            {
+                "beat": 29,
+                "chord": "Gm7",
+                "lyric": "Avoir la vie "
+            },
+            {
+                "beat": 33,
+                "chord": "Bb",
+                "lyric": "parta"
+            },
+            {
+                "beat": 37,
+                "chord": "EbM7",
+                "lyric": "gée"
+            },
+            {
+                "beat": 41,
+                "chord": "D",
+                "lyric": "Tailler dans l'marbre "
+            },
+            {
+                "beat": 45,
+                "chord": "D7",
+                "lyric": "le bout d'bois"
+            },
+            {
+                "beat": 49,
+                "chord": "Gm",
+                "lyric": "ça va d'soi"
+            },
+            {
+                "beat": 57,
+                "chord": "Bb",
+                "lyric": "À New-York, "
+            },
+            {
+                "beat": 61,
+                "chord": "F",
+                "lyric": "New-York avec "
+            },
+            {
+                "beat": 65,
+                "chord": "Gm",
+                "lyric": "toi"
+            },
+            {
+                "beat": 73,
+                "chord": "Bb",
+                "lyric": "À New-York, "
+            },
+            {
+                "beat": 77,
+                "chord": "F",
+                "lyric": "New-York avec "
+            },
+            {
+                "beat": 81,
+                "chord": "Gm",
+                "lyric": "toi"
+            }
         ]
     },
     {
@@ -28,11 +227,217 @@
         "title": "Call me maybe",
         "artist": "Carly Rae Jepsen",
         "popular": true,
-        "sections": [
-            { "lyric": "I threw a wish in the well", "chord": "G" },
-            { "lyric": "Don't ask me, I'll never tell", "chord": "D" },
-            { "lyric": "I looked to you as it fell", "chord": "C" },
-            { "lyric": "And now you're in my way", "chord": "C" }
+        "bpm": 120,
+        "content": [
+            {
+                "beat": 1,
+                "chord": "G",
+                "lyric": "I threw a wish in the well"
+            },
+            {
+                "beat": 9,
+                "chord": "D",
+                "lyric": "Don't ask me, I'll never tell"
+            },
+            {
+                "beat": 17,
+                "chord": "C",
+                "lyric": "I looked to you as it fell"
+            },
+            {
+                "beat": 25,
+                "chord": "C",
+                "lyric": "And now you're in my way"
+            },
+            {
+                "beat": 33,
+                "chord": "G",
+                "lyric": "I'd trade my soul for a wish"
+            },
+            {
+                "beat": 41,
+                "chord": "D",
+                "lyric": "Pennies and dimes for a kiss"
+            },
+            {
+                "beat": 49,
+                "chord": "C",
+                "lyric": "I wasn't looking for this"
+            },
+            {
+                "beat": 57,
+                "chord": "C",
+                "lyric": "But now you're in my way"
+            },
+            {
+                "beat": 65,
+                "chord": "G",
+                "lyric": "Your stare was holdin'"
+            },
+            {
+                "beat": 69,
+                "chord": "D",
+                "lyric": "Ripped jeans, skin was showin'"
+            },
+            {
+                "beat": 73,
+                "chord": "C",
+                "lyric": "Hot night, wind was blowin'"
+            },
+            {
+                "beat": 77,
+                "chord": "C",
+                "lyric": "Where you think you're going, baby?"
+            },
+            {
+                "beat": 81,
+                "chord": "G",
+                "lyric": "Hey, I just met you,"
+            },
+            {
+                "beat": 85,
+                "chord": "D",
+                "lyric": "And this is crazy"
+            },
+            {
+                "beat": 89,
+                "chord": "C",
+                "lyric": "But here's my number,"
+            },
+            {
+                "beat": 93,
+                "chord": "C",
+                "lyric": "So call me, maybe!"
+            },
+            {
+                "beat": 97,
+                "chord": "G",
+                "lyric": "It's hard to look right"
+            },
+            {
+                "beat": 101,
+                "chord": "D",
+                "lyric": "At you baby,"
+            },
+            {
+                "beat": 105,
+                "chord": "C",
+                "lyric": "But here's my number,"
+            },
+            {
+                "beat": 109,
+                "chord": "C",
+                "lyric": "So call me, maybe!"
+            }
+        ]
+    },
+    {
+        "id": "4",
+        "title": "Pink Pony Club",
+        "artist": "Chappell Roan",
+        "popular": true,
+        "bpm": 112,
+        "content": [
+            {
+                "beat": 1,
+                "chord": "G",
+                "lyric": "I know you wanted me to stay"
+            },
+            {
+                "beat": 9,
+                "chord": "D",
+                "lyric": "But I can't ignore the crazy visions of me in LA"
+            },
+            {
+                "beat": 17,
+                "chord": "Em",
+                "lyric": "And I heard that there's a special place"
+            },
+            {
+                "beat": 25,
+                "chord": "C",
+                "lyric": "Where boys and girls can all be queens every single day"
+            },
+            {
+                "beat": 33,
+                "chord": "G",
+                "lyric": "I'm up and dancing on the room"
+            },
+            {
+                "beat": 41,
+                "chord": "D",
+                "lyric": "And honestly it's exactly what I'm supposed to do"
+            },
+            {
+                "beat": 49,
+                "chord": "Em",
+                "lyric": "And don't you dare say I'm ignoring you"
+            },
+            {
+                "beat": 57,
+                "chord": "C",
+                "lyric": "I'm just a little busy trying to find my way to..."
+            },
+            {
+                "beat": 65,
+                "chord": "G",
+                "lyric": "God, what have you done?"
+            },
+            {
+                "beat": 69,
+                "chord": "D",
+                "lyric": "You're a pink pony girl"
+            },
+            {
+                "beat": 73,
+                "chord": "Em",
+                "lyric": "And you dance at the club"
+            },
+            {
+                "beat": 77,
+                "chord": "C",
+                "lyric": "Oh mama, I'm just having fun"
+            },
+            {
+                "beat": 81,
+                "chord": "G",
+                "lyric": "On the stage in my heels"
+            },
+            {
+                "beat": 85,
+                "chord": "D",
+                "lyric": "It's where I belong down at the"
+            },
+            {
+                "beat": 89,
+                "chord": "Em",
+                "lyric": "Pink Pony Club"
+            },
+            {
+                "beat": 97,
+                "chord": "C",
+                "lyric": "I'm gonna keep on dancing at the"
+            },
+            {
+                "beat": 101,
+                "chord": "G",
+                "lyric": "Pink Pony Club"
+            },
+            {
+                "beat": 105,
+                "chord": "D",
+                "lyric": "I'm gonna keep on dancing down in"
+            },
+            {
+                "beat": 109,
+                "chord": "Em",
+                "lyric": "West Hollywood"
+            },
+            {
+                "beat": 113,
+                "chord": "C",
+                "lyric": "I'm gonna keep on dancing at the Pink Pony Club"
+            }
         ]
     }
 ]
