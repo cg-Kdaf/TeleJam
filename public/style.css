@@ -18,18 +18,22 @@ body {
     color: var(--text-primary);
     display: flex;
     justify-content: center;
-    background-color: #fff;
+    align-items: center;
+    background-color: #111;
+    height: 100vh;
 }
 
 #app-container {
-    width: 100%;
-    max-width: 400px;
     height: 100vh;
+    width: auto;
+    max-width: 100vw;
+    aspect-ratio: 9 / 19.5;
     background-color: var(--bg-color);
     position: relative;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
 .global-brand {
@@ -277,12 +281,22 @@ body {
     margin: 0;
 }
 
+#song-display-view {
+    padding-top: 0;
+}
+
 /* Toolbar */
 .toolbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 20px;
+    position: sticky;
+    top: 0;
+    margin: 0 -30px 20px -30px;
+    padding: 40px 30px 20px 30px;
+    background-color: var(--bg-color);
+    z-index: 50;
+    box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.1);
 }
 #menu-btn {
     background: none;
