@@ -53,6 +53,16 @@ app.get('/api/songs/:id', (req, res) => {
     }
 });
 
+app.get('/covers/:url', (req, res) => {
+  const filePath = path.join(__dirname, 'data', 'covers', req.params.url);
+
+  if (fs.existsSync(filePath)) {
+    res.sendFile(filePath);
+  } else {
+    res.status(404).json({message: 'Cover not found'});
+  }
+});
+
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });

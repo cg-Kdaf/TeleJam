@@ -171,9 +171,14 @@ const app = {
     songs.forEach(song => {
       const card = document.createElement('div');
       card.className = 'song-card';
+      let coverHTML;
+      if (song.cover != undefined)
+        coverHTML = `<div class="cover"><img  src="${song.cover}"/></div>`;
+      else
+        coverHTML = `<div class="cd-icon cover"></div>`;
       card.innerHTML = `
                 <div class="song-card-left">
-                    <div class="cd-icon"></div>
+                    ${coverHTML}
                     <div class="song-info">
                         <h3>${song.title}</h3>
                         <p>${song.artist}</p>

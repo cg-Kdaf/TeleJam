@@ -3,6 +3,7 @@
         "id": "1",
         "title": "Hotel California",
         "artist": "Eagles",
+        "cover": "/covers/hotel_california.jpg",
         "popular": true,
         "bpm": 80,
         "content": [
@@ -122,6 +123,7 @@
         "id": "2",
         "title": "New-York avec toi",
         "artist": "Téléphone",
+        "cover": "/covers/new_york_avec_toi.jpg",
         "popular": true,
         "bpm": 136,
         "content": [
@@ -226,6 +228,7 @@
         "id": "3",
         "title": "Call me maybe",
         "artist": "Carly Rae Jepsen",
+        "cover": "/covers/call_me_maybe.jpeg",
         "popular": true,
         "bpm": 120,
         "content": [
@@ -335,6 +338,7 @@
         "id": "4",
         "title": "Pink Pony Club",
         "artist": "Chappell Roan",
+        "cover": "/covers/pink_pony_club.png",
         "popular": true,
         "bpm": 112,
         "content": [
