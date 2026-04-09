@@ -2,6 +2,8 @@ const app = {
   currentSong: null,
   currentRole: null,  // 'lead' or 'chords'
   scrollLocked: false,
+  isPlaying: false,
+  autoScrollAnimation: null,
 
   init() {
     this.cacheDOM();
@@ -36,12 +38,33 @@ const app = {
       toolbar: document.getElementById('toolbar'),
       toolbarTitle: document.getElementById('toolbar-title'),
       toolbarArtist: document.getElementById('toolbar-artist'),
+      togglePlayBtn: document.getElementById('toggle-play-btn'),
 
       menuBtn: document.getElementById('menu-btn'),
       sideMenu: document.getElementById('side-menu'),
       sideMenuOverlay: document.getElementById('side-menu-overlay'),
       closeMenuBtn: document.getElementById('close-menu-btn'),
-      bugModal: document.getElementById('bug-report-modal')
+      bugModal: document.getElementById('bug-report-modal'),
+      
+      // Session Modal Elements
+      openSessionModalBtn: document.getElementById('open-session-modal-btn'),
+      sessionModal: document.getElementById('session-modal'),
+      sessionHostView: document.getElementById('session-host-view'),
+      sessionJoinView: document.getElementById('session-join-view'),
+      sessionActions: document.getElementById('session-actions'),
+      hostSessionBtn: document.getElementById('host-session-btn'),
+      joinSessionBtn: document.getElementById('join-session-btn'),
+      closeSessionBtn: document.getElementById('close-session-btn'),
+      sessionHostStartBtn: document.getElementById('session-host-start-btn'),
+      sessionJoinStatus: document.getElementById('session-join-status'),
+
+      // BPM Elements
+      openBpmBtn: document.getElementById('open-bpm-btn'),
+      bpmModal: document.getElementById('bpm-modal'),
+      bpmDisplayValue: document.getElementById('bpm-display-value'),
+      bpmDecreaseBtn: document.getElementById('bpm-decrease-btn'),
+      bpmIncreaseBtn: document.getElementById('bpm-increase-btn'),
+      closeBpmBtn: document.getElementById('close-bpm-btn')
     };
   },
 
@@ -106,6 +129,76 @@ const app = {
       this.elements.bugModal.classList.add('hidden');
       document.getElementById('bug-report-text').value = '';
     });
+
+    // Session Modal Events
+    this.elements.openSessionModalBtn.addEventListener('click', () => {
+      this.elements.sessionModal.classList.remove('hidden');
+      this.resetSessionModal();
+    });
+
+    this.elements.closeSessionBtn.addEventListener('click', () => {
+      this.elements.sessionModal.classList.add('hidden');
+    });
+
+    this.elements.hostSessionBtn.addEventListener('click', () => {
+      this.elements.sessionActions.style.display = 'none';
+      this.elements.sessionHostView.classList.remove('hidden');
+    });
+
+    this.elements.joinSessionBtn.addEventListener('click', () => {
+      this.elements.sessionActions.style.display = 'none';
+      this.elements.sessionJoinView.classList.remove('hidden');
+      this.elements.sessionJoinStatus.textContent = 'Scanning QR Code...';
+      
+      // Fake scanning delay
+      setTimeout(() => {
+        this.elements.sessionJoinStatus.textContent = 'Session found! Joining...';
+        setTimeout(() => {
+          this.elements.sessionModal.classList.add('hidden');
+          // Start the shared session automatically with a random song!
+          alert('Successfully joined the shared session!');
+        }, 1500);
+      }, 3000);
+    });
+
+    this.elements.sessionHostStartBtn.addEventListener('click', () => {
+      this.elements.sessionModal.classList.add('hidden');
+      alert('Shared session started! Others can join via the QR code.');
+    });
+
+    // Auto-scroll toggle
+    this.elements.togglePlayBtn.addEventListener('click', () => {
+      this.toggleAutoScroll();
+    });
+
+    // BPM Modal Events
+    this.elements.openBpmBtn.addEventListener('click', () => {
+      this.elements.bpmModal.classList.remove('hidden');
+      if (!this.currentSong.customBpm) {
+        this.currentSong.customBpm = this.currentSong.bpm || 120;
+      }
+      this.elements.bpmDisplayValue.textContent = this.currentSong.customBpm;
+    });
+
+    this.elements.closeBpmBtn.addEventListener('click', () => {
+      this.elements.bpmModal.classList.add('hidden');
+    });
+
+    this.elements.bpmIncreaseBtn.addEventListener('click', () => {
+      this.currentSong.customBpm = (this.currentSong.customBpm || 120) + 5;
+      this.elements.bpmDisplayValue.textContent = this.currentSong.customBpm;
+    });
+
+    this.elements.bpmDecreaseBtn.addEventListener('click', () => {
+      this.currentSong.customBpm = Math.max(30, (this.currentSong.customBpm || 120) - 5);
+      this.elements.bpmDisplayValue.textContent = this.currentSong.customBpm;
+    });
+  },
+
+  resetSessionModal() {
+    this.elements.sessionActions.style.display = 'flex';
+    this.elements.sessionHostView.classList.add('hidden');
+    this.elements.sessionJoinView.classList.add('hidden');
   },
 
   closeMenu() {
@@ -247,11 +340,21 @@ const app = {
   },
 
   showTitleView(viewName) {
+    // Stop scrolling if leaving song view
+    if (viewName !== 'song') {
+      this.isPlaying = false;
+      this.stopAutoScroll();
+      if (this.elements.togglePlayBtn) {
+        this.elements.togglePlayBtn.querySelector('i').className = 'fas fa-play';
+      }
+    }
+
     // Hide all views
     Object.values(this.views).forEach(v => v.classList.remove('active'));
 
     // Hide toolbar by default
     this.elements.toolbar.classList.add('hidden');
+    this.elements.openBpmBtn.classList.add('hidden');
 
     if (viewName === 'home') {
       this.views.home.classList.add('active');
@@ -260,6 +363,7 @@ const app = {
     } else if (viewName === 'song') {
       this.views.song.classList.add('active');
       this.elements.toolbar.classList.remove('hidden');
+      this.elements.openBpmBtn.classList.remove('hidden');
     }
   },
 
@@ -276,6 +380,59 @@ const app = {
     }
 
     this.closeMenu();
+  },
+
+  toggleAutoScroll() {
+    this.isPlaying = !this.isPlaying;
+    const icon = this.elements.togglePlayBtn.querySelector('i');
+    
+    if (this.isPlaying) {
+      icon.className = 'fas fa-pause';
+      this.startAutoScroll();
+    } else {
+      icon.className = 'fas fa-play';
+      this.stopAutoScroll();
+    }
+  },
+
+  startAutoScroll() {
+    let lastTime = performance.now();
+    // Use floating point accumulation to avoid fractional sub-pixel loss in fast frames
+    let accumulatedScroll = 0;
+    
+    const step = (currentTime) => {
+      if (!this.isPlaying) return;
+      
+      const delta = (currentTime - lastTime) / 1000;
+      lastTime = currentTime;
+      
+      // Always get the latest BPM so it updates in real time if user changes it
+      const bpm = this.currentSong.customBpm || this.currentSong.bpm || 120;
+      
+      // 120 beats per minute -> 2 beats per second.
+      // E.g. A typical line height could be ~40px per beat block, so 2 beats/sec = 80px/sec 
+      // This makes the speed directly and strongly proportional to BPM
+      const pixelsPerSecond = (bpm / 120) * 80; 
+      
+      if (this.views.song) {
+        accumulatedScroll += pixelsPerSecond * delta;
+        if (accumulatedScroll >= 1) {
+          const pixelsToScroll = Math.floor(accumulatedScroll);
+          this.views.song.scrollTop += pixelsToScroll;
+          accumulatedScroll -= pixelsToScroll;
+        }
+      }
+      
+      this.autoScrollAnimation = requestAnimationFrame(step);
+    };
+    
+    this.autoScrollAnimation = requestAnimationFrame(step);
+  },
+
+  stopAutoScroll() {
+    if (this.autoScrollAnimation) {
+      cancelAnimationFrame(this.autoScrollAnimation);
+    }
   }
 };
 
