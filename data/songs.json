@@ -3,7 +3,6 @@
         "id": "1",
         "title": "Hotel California",
         "artist": "Eagles",
-        "cover": "/covers/hotel_california.jpg",
         "popular": true,
         "bpm": 80,
         "content": [
@@ -123,7 +122,6 @@
         "id": "2",
         "title": "New-York avec toi",
         "artist": "Téléphone",
-        "cover": "/covers/new_york_avec_toi.jpg",
         "popular": true,
         "bpm": 136,
         "content": [
@@ -228,7 +226,6 @@
         "id": "3",
         "title": "Call me maybe",
         "artist": "Carly Rae Jepsen",
-        "cover": "/covers/call_me_maybe.jpeg",
         "popular": true,
         "bpm": 120,
         "content": [
@@ -338,7 +335,6 @@
         "id": "4",
         "title": "Pink Pony Club",
         "artist": "Chappell Roan",
-        "cover": "/covers/pink_pony_club.png",
         "popular": true,
         "bpm": 112,
         "content": [
@@ -441,6 +437,600 @@
                 "beat": 113,
                 "chord": "C",
                 "lyric": "I'm gonna keep on dancing at the Pink Pony Club"
+            }
+        ]
+    },
+    {
+        "id": "5",
+        "title": "Wonderwall",
+        "artist": "Oasis",
+        "popular": true,
+        "bpm": 87,
+        "content": [
+            {
+                "beat": 1,
+                "chord": "Em7",
+                "lyric": "Today is "
+            },
+            {
+                "beat": 2,
+                "chord": "G",
+                "lyric": "gonna be the day that they're "
+            },
+            {
+                "beat": 3,
+                "chord": "Dsus4",
+                "lyric": "gonna throw it back to "
+            },
+            {
+                "beat": 4,
+                "chord": "A7sus4",
+                "lyric": "you, \n"
+            },
+            {
+                "beat": 5,
+                "chord": "Em7",
+                "lyric": "By now you "
+            },
+            {
+                "beat": 6,
+                "chord": "G",
+                "lyric": "should've somehow realized "
+            },
+            {
+                "beat": 7,
+                "chord": "Dsus4",
+                "lyric": "what you gotta "
+            },
+            {
+                "beat": 8,
+                "chord": "A7sus4",
+                "lyric": "do \n"
+            },
+            {
+                "beat": 9,
+                "chord": "Em7",
+                "lyric": "I don't believe that "
+            },
+            {
+                "beat": 10,
+                "chord": "G",
+                "lyric": "anybody "
+            },
+            {
+                "beat": 11,
+                "chord": "Dsus4",
+                "lyric": "feels the way I "
+            },
+            {
+                "beat": 12,
+                "chord": "A7sus4",
+                "lyric": "do \n"
+            },
+            {
+                "beat": 13,
+                "chord": "Cadd9",
+                "lyric": "About you "
+            },
+            {
+                "beat": 14,
+                "chord": "Dsus4",
+                "lyric": "now \n"
+            }
+        ]
+    },
+    {
+        "id": "6",
+        "title": "Creep",
+        "artist": "Radiohead",
+        "popular": true,
+        "bpm": 92,
+        "content": [
+            {
+                "beat": 1,
+                "chord": "G",
+                "lyric": "When you were here "
+            },
+            {
+                "beat": 5,
+                "chord": "G",
+                "lyric": "before, \n"
+            },
+            {
+                "beat": 9,
+                "chord": "B",
+                "lyric": "Couldn't look you in the "
+            },
+            {
+                "beat": 13,
+                "chord": "B",
+                "lyric": "eye \n"
+            },
+            {
+                "beat": 17,
+                "chord": "C",
+                "lyric": "You're just like an "
+            },
+            {
+                "beat": 21,
+                "chord": "C",
+                "lyric": "angel, \n"
+            },
+            {
+                "beat": 25,
+                "chord": "Cm",
+                "lyric": "Your skin makes me "
+            },
+            {
+                "beat": 29,
+                "chord": "Cm",
+                "lyric": "cry \n"
+            },
+            {
+                "beat": 33,
+                "chord": "G",
+                "lyric": "You float like a "
+            },
+            {
+                "beat": 37,
+                "chord": "G",
+                "lyric": "feather, \n"
+            },
+            {
+                "beat": 41,
+                "chord": "B",
+                "lyric": "In a beautiful "
+            },
+            {
+                "beat": 45,
+                "chord": "B",
+                "lyric": "world \n"
+            },
+            {
+                "beat": 49,
+                "chord": "C",
+                "lyric": "I wish I was "
+            },
+            {
+                "beat": 53,
+                "chord": "C",
+                "lyric": "special, \n"
+            },
+            {
+                "beat": 57,
+                "chord": "Cm",
+                "lyric": "You're so f***ing "
+            },
+            {
+                "beat": 61,
+                "chord": "Cm",
+                "lyric": "special \n"
+            },
+            {
+                "beat": 65,
+                "chord": "G",
+                "lyric": "But I'm a "
+            },
+            {
+                "beat": 69,
+                "chord": "G",
+                "lyric": "creep, \n"
+            },
+            {
+                "beat": 73,
+                "chord": "B",
+                "lyric": "I'm a "
+            },
+            {
+                "beat": 77,
+                "chord": "B",
+                "lyric": "weirdo \n"
+            }
+        ]
+    },
+    {
+        "id": "7",
+        "title": "Let It Be",
+        "artist": "The Beatles",
+        "popular": true,
+        "bpm": 70,
+        "content": [
+            {
+                "beat": 1,
+                "chord": "C",
+                "lyric": "When I find myself in "
+            },
+            {
+                "beat": 3,
+                "chord": "G",
+                "lyric": "times of trouble \n"
+            },
+            {
+                "beat": 5,
+                "chord": "Am",
+                "lyric": "Mother Mary "
+            },
+            {
+                "beat": 7,
+                "chord": "F",
+                "lyric": "comes to me \n"
+            },
+            {
+                "beat": 9,
+                "chord": "C",
+                "lyric": "Speaking words of "
+            },
+            {
+                "beat": 11,
+                "chord": "G",
+                "lyric": "wisdom, \n"
+            },
+            {
+                "beat": 13,
+                "chord": "F",
+                "lyric": "let it "
+            },
+            {
+                "beat": 14,
+                "chord": "C/E",
+                "lyric": "be \n"
+            },
+            {
+                "beat": 15,
+                "chord": "C",
+                "lyric": "And in my hour of "
+            },
+            {
+                "beat": 17,
+                "chord": "G",
+                "lyric": "darkness \n"
+            },
+            {
+                "beat": 19,
+                "chord": "Am",
+                "lyric": "She is standing right in "
+            },
+            {
+                "beat": 21,
+                "chord": "F",
+                "lyric": "front of me \n"
+            },
+            {
+                "beat": 23,
+                "chord": "C",
+                "lyric": "Speaking words of "
+            },
+            {
+                "beat": 25,
+                "chord": "G",
+                "lyric": "wisdom, \n"
+            },
+            {
+                "beat": 27,
+                "chord": "F",
+                "lyric": "let it "
+            },
+            {
+                "beat": 28,
+                "chord": "C",
+                "lyric": "be \n"
+            },
+            {
+                "beat": 29,
+                "chord": "Am",
+                "lyric": "Let it be, let it "
+            },
+            {
+                "beat": 31,
+                "chord": "G",
+                "lyric": "be, let it "
+            },
+            {
+                "beat": 33,
+                "chord": "F",
+                "lyric": "be, let it "
+            },
+            {
+                "beat": 35,
+                "chord": "C",
+                "lyric": "be \n"
+            }
+        ]
+    },
+    {
+        "id": "5",
+        "title": "Wonderwall",
+        "artist": "Oasis",
+        "popular": true,
+        "bpm": 87,
+        "content": [
+            {
+                "beat": 1,
+                "chord": "Em7",
+                "lyric": "Today is "
+            },
+            {
+                "beat": 2,
+                "chord": "G",
+                "lyric": "gonna be the day that they're "
+            },
+            {
+                "beat": 3,
+                "chord": "Dsus4",
+                "lyric": "gonna throw it back to "
+            },
+            {
+                "beat": 4,
+                "chord": "A7sus4",
+                "lyric": "you, \n"
+            },
+            {
+                "beat": 5,
+                "chord": "Em7",
+                "lyric": "By now you "
+            },
+            {
+                "beat": 6,
+                "chord": "G",
+                "lyric": "should've somehow realized "
+            },
+            {
+                "beat": 7,
+                "chord": "Dsus4",
+                "lyric": "what you gotta "
+            },
+            {
+                "beat": 8,
+                "chord": "A7sus4",
+                "lyric": "do \n"
+            },
+            {
+                "beat": 9,
+                "chord": "Em7",
+                "lyric": "I don't believe that "
+            },
+            {
+                "beat": 10,
+                "chord": "G",
+                "lyric": "anybody "
+            },
+            {
+                "beat": 11,
+                "chord": "Dsus4",
+                "lyric": "feels the way I "
+            },
+            {
+                "beat": 12,
+                "chord": "A7sus4",
+                "lyric": "do \n"
+            },
+            {
+                "beat": 13,
+                "chord": "Cadd9",
+                "lyric": "About you "
+            },
+            {
+                "beat": 14,
+                "chord": "Dsus4",
+                "lyric": "now \n"
+            }
+        ]
+    },
+    {
+        "id": "6",
+        "title": "Creep",
+        "artist": "Radiohead",
+        "popular": true,
+        "bpm": 92,
+        "content": [
+            {
+                "beat": 1,
+                "chord": "G",
+                "lyric": "When you were here "
+            },
+            {
+                "beat": 5,
+                "chord": "G",
+                "lyric": "before, \n"
+            },
+            {
+                "beat": 9,
+                "chord": "B",
+                "lyric": "Couldn't look you in the "
+            },
+            {
+                "beat": 13,
+                "chord": "B",
+                "lyric": "eye \n"
+            },
+            {
+                "beat": 17,
+                "chord": "C",
+                "lyric": "You're just like an "
+            },
+            {
+                "beat": 21,
+                "chord": "C",
+                "lyric": "angel, \n"
+            },
+            {
+                "beat": 25,
+                "chord": "Cm",
+                "lyric": "Your skin makes me "
+            },
+            {
+                "beat": 29,
+                "chord": "Cm",
+                "lyric": "cry \n"
+            },
+            {
+                "beat": 33,
+                "chord": "G",
+                "lyric": "You float like a "
+            },
+            {
+                "beat": 37,
+                "chord": "G",
+                "lyric": "feather, \n"
+            },
+            {
+                "beat": 41,
+                "chord": "B",
+                "lyric": "In a beautiful "
+            },
+            {
+                "beat": 45,
+                "chord": "B",
+                "lyric": "world \n"
+            },
+            {
+                "beat": 49,
+                "chord": "C",
+                "lyric": "I wish I was "
+            },
+            {
+                "beat": 53,
+                "chord": "C",
+                "lyric": "special, \n"
+            },
+            {
+                "beat": 57,
+                "chord": "Cm",
+                "lyric": "You're so f***ing "
+            },
+            {
+                "beat": 61,
+                "chord": "Cm",
+                "lyric": "special \n"
+            },
+            {
+                "beat": 65,
+                "chord": "G",
+                "lyric": "But I'm a "
+            },
+            {
+                "beat": 69,
+                "chord": "G",
+                "lyric": "creep, \n"
+            },
+            {
+                "beat": 73,
+                "chord": "B",
+                "lyric": "I'm a "
+            },
+            {
+                "beat": 77,
+                "chord": "B",
+                "lyric": "weirdo \n"
+            }
+        ]
+    },
+    {
+        "id": "7",
+        "title": "Let It Be",
+        "artist": "The Beatles",
+        "popular": true,
+        "bpm": 70,
+        "content": [
+            {
+                "beat": 1,
+                "chord": "C",
+                "lyric": "When I find myself in "
+            },
+            {
+                "beat": 3,
+                "chord": "G",
+                "lyric": "times of trouble \n"
+            },
+            {
+                "beat": 5,
+                "chord": "Am",
+                "lyric": "Mother Mary "
+            },
+            {
+                "beat": 7,
+                "chord": "F",
+                "lyric": "comes to me \n"
+            },
+            {
+                "beat": 9,
+                "chord": "C",
+                "lyric": "Speaking words of "
+            },
+            {
+                "beat": 11,
+                "chord": "G",
+                "lyric": "wisdom, \n"
+            },
+            {
+                "beat": 13,
+                "chord": "F",
+                "lyric": "let it "
+            },
+            {
+                "beat": 14,
+                "chord": "C/E",
+                "lyric": "be \n"
+            },
+            {
+                "beat": 15,
+                "chord": "C",
+                "lyric": "And in my hour of "
+            },
+            {
+                "beat": 17,
+                "chord": "G",
+                "lyric": "darkness \n"
+            },
+            {
+                "beat": 19,
+                "chord": "Am",
+                "lyric": "She is standing right in "
+            },
+            {
+                "beat": 21,
+                "chord": "F",
+                "lyric": "front of me \n"
+            },
+            {
+                "beat": 23,
+                "chord": "C",
+                "lyric": "Speaking words of "
+            },
+            {
+                "beat": 25,
+                "chord": "G",
+                "lyric": "wisdom, \n"
+            },
+            {
+                "beat": 27,
+                "chord": "F",
+                "lyric": "let it "
+            },
+            {
+                "beat": 28,
+                "chord": "C",
+                "lyric": "be \n"
+            },
+            {
+                "beat": 29,
+                "chord": "Am",
+                "lyric": "Let it be, let it "
+            },
+            {
+                "beat": 31,
+                "chord": "G",
+                "lyric": "be, let it "
+            },
+            {
+                "beat": 33,
+                "chord": "F",
+                "lyric": "be, let it "
+            },
+            {
+                "beat": 35,
+                "chord": "C",
+                "lyric": "be \n"
             }
         ]
     }
