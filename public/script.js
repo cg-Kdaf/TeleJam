@@ -4,6 +4,8 @@ const app = {
   scrollLocked: false,
   isPlaying: false,
   autoScrollAnimation: null,
+  currentBeat: 1,
+  lastFrameTime: 0,
 
   init() {
     this.cacheDOM();
@@ -198,6 +200,10 @@ const app = {
           Math.max(30, (this.currentSong.customBpm || 120) - 5);
       this.elements.bpmDisplayValue.textContent = this.currentSong.customBpm;
     });
+
+    this.views.song.addEventListener('scroll', () => {
+      this.highlightCurrentLine();
+    });
   },
 
   resetSessionModal() {
@@ -334,7 +340,8 @@ const app = {
       if (item.lyric) {
         const lyricSpan = document.createElement('span');
         lyricSpan.className = 'lyric-box';
-        lyricSpan.innerHTML = `<span class="lyric">${item.lyric}</span>`;
+        const formattedLyric = item.lyric.replace(/\n/g, '<br/>');
+        lyricSpan.innerHTML = `<span class="lyric">${formattedLyric}</span>`;
         chunkDiv.appendChild(lyricSpan);
       }
 
@@ -343,9 +350,12 @@ const app = {
 
     this.showTitleView('song');
 
-    // Reset scroll position and lock
-    this.views.song.scrollTop = 0;
-    if (this.scrollLocked) this.toggleScrollLock();
+    // Reset scroll position and lock, using setTimeout to ensure the layout has
+    // updated
+    setTimeout(() => {
+      this.views.song.scrollTop = 0;
+      if (this.scrollLocked) this.toggleScrollLock();
+    }, 0);
   },
 
   showTitleView(viewName) {
@@ -400,6 +410,8 @@ const app = {
     const icon = this.elements.togglePlayBtn.querySelector('i');
 
     if (this.isPlaying) {
+      this.lastFrameTime = performance.now();
+      this.startAutoScroll();
       icon.className = 'fas fa-pause';
       if (this.elements.vinylDisc) {
         this.elements.vinylDisc.classList.add('vinyl-spinning');
@@ -415,39 +427,90 @@ const app = {
   },
 
   startAutoScroll() {
-    let lastTime = performance.now();
-    // Use floating point accumulation to avoid fractional sub-pixel loss in
-    // fast frames
-    let accumulatedScroll = 0;
+    this.lastFrameTime = performance.now();
+
+    const lines = Array.from(this.elements.lyricsContainer.children);
+    const readingZoneOffset = this.views.song.clientHeight * 0.4;
+
+    const timeline = lines.map(line => {
+      return {
+        beat: parseFloat(line.dataset.beat || 1),
+        element: line,
+        targetScroll: line.offsetTop - readingZoneOffset
+      };
+    });
 
     const step = (currentTime) => {
       if (!this.isPlaying) return;
 
-      const delta = (currentTime - lastTime) / 1000;
-      lastTime = currentTime;
+      const deltaMs = currentTime - this.lastFrameTime;
+      this.lastFrameTime = currentTime;
 
-      // Always get the latest BPM so it updates in real time if user changes it
       const bpm = this.currentSong.customBpm || this.currentSong.bpm || 120;
 
-      // 120 beats per minute -> 2 beats per second.
-      // E.g. A typical line height could be ~40px per beat block, so 2
-      // beats/sec = 80px/sec This makes the speed directly and strongly
-      // proportional to BPM
-      const pixelsPerSecond = (bpm / 120) * 80;
+      const beatsPerMs = bpm / 60000;
+      this.currentBeat += deltaMs * beatsPerMs;
 
-      if (this.views.song) {
-        accumulatedScroll += pixelsPerSecond * delta;
-        if (accumulatedScroll >= 1) {
-          const pixelsToScroll = Math.floor(accumulatedScroll);
-          this.views.song.scrollTop += pixelsToScroll;
-          accumulatedScroll -= pixelsToScroll;
+      let activeLineIndex = 0;
+      for (let i = 0; i < timeline.length; i++) {
+        if (this.currentBeat >= timeline[i].beat) {
+          activeLineIndex = i;
+        } else {
+          break;
         }
+      }
+
+      lines.forEach((line, index) => {
+        if (index === activeLineIndex) {
+          line.classList.add('active-line');
+        } else {
+          line.classList.remove('active-line');
+        }
+      });
+
+      if (activeLineIndex < timeline.length) {
+        const currentPoint = timeline[activeLineIndex];
+        const nextPoint = timeline[activeLineIndex + 1];
+
+        let targetY = currentPoint.targetScroll;
+
+        if (nextPoint && (nextPoint.beat - currentPoint.beat) > 0) {
+          const progress = (this.currentBeat - currentPoint.beat) /
+              (nextPoint.beat - currentPoint.beat);
+          const clampedProgress = Math.max(0, Math.min(1, progress));
+
+          targetY = currentPoint.targetScroll +
+              ((nextPoint.targetScroll - currentPoint.targetScroll) *
+               clampedProgress);
+        }
+
+        this.views.song.scrollTop = Math.max(0, targetY);
       }
 
       this.autoScrollAnimation = requestAnimationFrame(step);
     };
 
     this.autoScrollAnimation = requestAnimationFrame(step);
+  },
+
+  highlightCurrentLine() {
+    const container = this.views.song;
+    const lines = this.elements.lyricsContainer.children;
+    if (!lines || lines.length === 0) return;
+
+    const readingZone = container.scrollTop + (container.clientHeight * 0.4);
+
+    Array.from(lines).forEach((line) => {
+      const lineTop = line.offsetTop;
+      const lineBottom = lineTop + line.offsetHeight;
+
+      // Si le texte traverse notre "zone de lecture" virtuelle
+      if (readingZone >= lineTop && readingZone <= lineBottom) {
+        line.classList.add('active-line');
+      } else {
+        line.classList.remove('active-line');
+      }
+    });
   },
 
   stopAutoScroll() {
